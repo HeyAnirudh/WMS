@@ -1,0 +1,23 @@
+dependencies:
+  - smartcontractkit/chainlink-brownie-contracts@0.5.0
+  - OpenZeppelin/openzeppelin-contracts@4.8.0
+compiler:
+  solc:
+    remappings:
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@0.5.0"
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.8.0"
+dotenv: .env
+networks:
+  default: development
+  development:
+    keyhash: "0x0476f9a745b61ea5c0ab224d3a6e4c99f0b02fce4da01143a4f70aa80ae76e8a"
+  goerli:
+    subId: 6574
+    keyhash: "0x0476f9a745b61ea5c0ab224d3a6e4c99f0b02fce4da01143a4f70aa80ae76e8a"
+    vrf_coordinator: "0x2ca8e0c643bde4c2e08ab1fa0da3401adad7734d"
+    eth-usd-priceFeed: "0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e"
+    verify: True
+  mainnet-fork:
+    eth-usd-priceFeed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419"
+wallets:
+  from_key: ${PRIVATE_KEY}
