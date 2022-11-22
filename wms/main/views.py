@@ -4,8 +4,10 @@ from django.shortcuts import render,HttpResponse, loader
 
 
 def index(request):
+
     context={}
     html_template = loader.get_template( 'landing.html' )
+
 
     return HttpResponse(html_template.render(context, request))
 
