@@ -1,9 +1,19 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse, loader
 # from django.conf import settings
 # settings.configure()
 
 
 def index(request):
-    return HttpResponse("heelo bitch")
+    context={}
+    html_template = loader.get_template( 'landing.html' )
 
+    return HttpResponse(html_template.render(context, request))
+
+
+def login(request):
+    return render(request,'login.html')
+
+
+def register(request):
+    return render(request,'register.html')
 # Create your views here.
