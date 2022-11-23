@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hydrosenseun",
+  "private_key_id": "67a0e9f580504568712900c54010452b2920d3df",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCiNEt1z8pWuszb\nllrDh+z4UQrxoZ72zyLHps0LqwE47h/zifsYQFbWSy7Rxl+XF/c4xx7qOnkcRHuM\nUbrVJOrKf0Z/jUCFXWSAFZWcEduEk0tD03+PGo0ezLyB/V9yjXFF8FdhCmJEELCT\npfZN7CNgl0yqjsUxcXcJxL3LdDGq4T9jqfUOwbcmNmDPRhEVmomZk9ktyizaWp0V\nKtRwrEy+EmyeLIMt9IexPecklVtXmblHgRUqaTEtfXiViTpJSQ0rPC8zxkT6KXhX\nvE3qotPEFiVHMVjnfgWvOGd68AEh9/5HZzpGDWW6IyAz0czKDpJDUF9jRQo2xqfe\n/cP6KUNJAgMBAAECggEAGMPPOZ+ODwvaNzSPiwb3wTnuZ9H7SUd60ey/paZoO17v\n9ej9M0iveWxlK5YUBieckUilibF/yDcUfeoEkoJebqhcBSF11mbZ70xcWUXItEcg\n2Kwz749oOGmd5mLe7ch2oOz/CkvhkO7TZteR8Xe6Nwcip2/A37mpKQ6mw6dr5eDb\n0tNsVNqQktpWF+gyUUqfjc/ZnIdN9T3Rn2VwtWLJbYPOaaezWe+VQUheoh477HHG\nCiWf1gofhrpGj0lzw0qLYaxcZ9Dq7hFp7dEwusMPClkRaU6XyKdLhnM76ex4M7HW\nGk4enIrXoOLPtI9sAlFchHypbnIELJRoX7mPD8N+uQKBgQDW42ZqO8nXai9xqWcU\n3E2arRnBmAXuLygh1ENZ86qllsMebyVWgdSbEYGlKC3eqHFq0tNExFVlPUrzZnTg\nUInWlPSZtlD+ehgtXncHXmaSJW/6NwClGoPCf0Wg4KWhrdEHga7sU+YJ3suvoPej\n6Mi7gLCXFwNuL1FJm/75fpR61wKBgQDBPJYMeuIKEP76jW4mtRss09QdGgQKXBhc\n7iLiItvrnEBQjSAejxZ6i6Ks3btNIW0d5eza5aS4HS4jTugQKqEOq14y4d6dJ+Tg\nxBO6zj/KxMR3cwyZnw0Wkv4gRdnzYUUOguMcFw+Pi3R9IE5z87W5i+Tc8SNNKXie\nX5nDO+mO3wKBgQCaAlySYstkYiwisCC66LGN2+YLw+LsNEv1AuZKf8Kb7xNkqo/+\nEgrIIKHkNom5fMvcncDhFj2F04n2LEYzxkUjz5oG2I3v9J2DVqLEWzn0IHTCxczm\nh7xLF2BVzuumlqarVJyDsBW8mTsuYpVZmirTh4YIo2vH+o2tzenN8pSD/QKBgQCU\noa5kcQx2Y7ZMMAbe3QTHCTQpIj6jXU0cBcttFxUDeA78JmDjQHowzkDVKEQOQry0\nd4skn+h/+WnonKPg83koWGW/S364cNwaipcGY+grZggcPLEfZHhjubKgTjojetjs\nHX7kt1QvvDtglz3g8D8CNflWfGAD1PdDEhOqWOYADwKBgDxJcM7vI8USRAbZhAkI\nD4/npLMp3t08vbwTbMQj3ahK8W7SI1P3cy6ErBhm7TNHFtJmqT0c9whZF+Pw8TqR\nMrLCwE/A8neROLwbFEFCvqAajF7bBuh8rtvWn7peVp59+bjs8590ZmjTXQzPU5sF\nR7e8P7SNFvLRtppd61rkmEAm\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-3pc9t@hydrosenseun.iam.gserviceaccount.com",
+  "client_id": "113018868526454224931",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-3pc9t%40hydrosenseun.iam.gserviceaccount.com"
+}
