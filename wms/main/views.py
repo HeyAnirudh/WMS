@@ -115,6 +115,23 @@ def signup(request):
     return render(request, "landing.html")
 
 
+def signin(request):
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    doc_ref = db.collection("user-registration").document(str(email))
+    doc = doc_ref.get()
+    if doc.exists:
+        doc = doc.to_dict()
+        if password == doc["password"]:
+            return render(request, "landing.html")
+        else:
+            print("Wrong Password")
+            return render(request, "login.html")
+    else:
+        print("No such user!")
+        return render(request, "register.html")
+
+
 def deployContract(request):
     deploy()
     return render(request, "admin.html")
