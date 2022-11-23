@@ -15,4 +15,5 @@ urlpatterns = [
     path("storage/", views.storage, name="storage"),
     path("action1/", views.deployContract, name="action1"),
     path("calculate/", views.calculate, name="calc"),
+    path("watertower/", views.waterTower, name="waterTower"),
 ]

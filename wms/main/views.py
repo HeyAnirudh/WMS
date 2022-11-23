@@ -93,6 +93,10 @@ def trial(request):
     return render(request, "trial.html")
 
 
+def waterTower(request):
+    return render(request, "waterTower.html")
+
+
 def deployContract(request):
     deploy()
     return render(request, "admin.html")
