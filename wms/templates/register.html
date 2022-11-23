@@ -116,7 +116,8 @@
           <div class="col-md-6 col-lg-5">
             <div class="register-box bg-white box-shadow border-radius-10">
               <div class="wizard-content">
-                <form class="tab-wizard2 wizard-circle wizard">
+                <form class="tab-wizard2 wizard-circle wizard" method="post" action="/regis/" name="register">
+                  {% csrf_token %}
                   <h5>Basic Account Credentials</h5>
                   <section>
                     <div class="form-wrap max-width-600 mx-auto">
@@ -125,19 +126,19 @@
                           >Email Address*</label
                         >
                         <div class="col-sm-8">
-                          <input type="email" class="form-control" />
+                          <input type="email" class="form-control" name="email"/>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Username*</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input type="text" class="form-control" name="username" />
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Password*</label>
                         <div class="col-sm-8">
-                          <input type="password" class="form-control" />
+                          <input type="password" class="form-control" name="password" />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -159,7 +160,7 @@
                           >Full Name*</label
                         >
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input type="text" class="form-control" name="fullname" />
                         </div>
                       </div>
                       <div class="form-group row align-items-center">
@@ -172,7 +173,7 @@
                               type="radio"
                               id="male"
                               name="gender"
-                              class="custom-control-input"
+                              class="custom-control-input" name="gender"
                             />
                             <label class="custom-control-label" for="male"
                               >Male</label
@@ -196,13 +197,13 @@
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label">City</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input type="text" class="form-control" name="city"/>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label">State</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input type="text" class="form-control" name="state" />
                         </div>
                       </div>
                     </div>
@@ -231,7 +232,7 @@
                           >MetaMask Address</label
                         >
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input type="text" class="form-control"  name="metamask" />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -239,7 +240,7 @@
                           >Flat Number</label
                         >
                         <div class="col-sm-3">
-                          <input type="text" class="form-control" />
+                          <input type="text" class="form-control" name="flat"/>
                         </div>
                       </div>
                     </div>
@@ -253,7 +254,7 @@
     </div>
     <!-- success Popup html Start -->
     <button
-      type="button"
+      type="submit"
       id="success-modal-btn"
       hidden
       data-toggle="modal"
