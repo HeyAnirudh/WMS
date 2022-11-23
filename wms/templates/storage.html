@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+      <!-- Basic Page Info -->
+      <meta charset="utf-8" />
+      <title>HydroSense - Water Supply</title>
+
+      <!-- Site favicon -->
+      <link
+         rel="apple-touch-icon"
+         sizes="180x180"
+         href="/static/vendors/images/apple-touch-icon.png"
+      />
+      <link
+         rel="icon"
+         type="image/png"
+         sizes="32x32"
+         href="/static/vendors/images/favicon-32x32.png"
+      />
+      <link
+         rel="icon"
+         type="image/png"
+         sizes="16x16"
+         href="/static/vendors/images/favicon-16x16.png"
+      />
+
+      <!-- Mobile Specific Metas -->
+      <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+
+      <!-- Google Font -->
+      <link
+         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+         rel="stylesheet"
+      />
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="/static/vendors/styles/core.css" />
+      <link
+         rel="stylesheet"
+         type="text/css"
+         href="/static/vendors/styles/icon-font.min.css"
+      />
+      <link
+         rel="stylesheet"
+         type="text/css"
+         href="/static/src/plugins/datatables/css/dataTables.bootstrap4.min.css"
+      />
+      <link
+         rel="stylesheet"
+         type="text/css"
+         href="/static/src/plugins/datatables/css/responsive.bootstrap4.min.css"
+      />
+      <link rel="stylesheet" type="text/css" href="/static/vendors/styles/style.css" />
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script type="module"
+         async
+         src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
+      ></script>
+      <script type="module">
+         window.dataLayer = window.dataLayer || [];
+         function gtag() {
+            dataLayer.push(arguments);
+         }
+         gtag("js", new Date());
+
+         gtag("config", "G-GBZ3SGGX85");
+      </script>
+      <!-- Google Tag Manager -->
+      <script type="module">
+         (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s),
+               dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+         })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+      </script>
+      <!-- End Google Tag Manager -->
+      <!-- router script-->
+      <script defer type="module" src="./router.js"></script>
+   </head>
+   <body>
+
+      <!-- <div class="pre-loader">
+         <div class="pre-loader-box">
+            <div class="loader-logo">
+               <!-- insert custom app logo here - svg format -->
+               <!-- <img src="/static/vendors/images/deskapp-logo.svg" alt="" />
+            </div>
+            <div class="loader-progress" id="progress_div">
+               <div class="bar" id="bar1"></div>
+            </div>
+            <div class="percent" id="percent1">0%</div>
+            <div class="loading-text">Loading...</div>
+         </div>
+      </div> --> 
+
+     
+      <div class="main-container">
+         <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="title pb-20">
+               <h2 class="h3 mb-0">Storage Facility</h2>
+            </div>
+
+            <div class="row pb-10">
+               <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                  <div class="card-box height-100-p widget-style3">
+                     <div class="d-flex flex-wrap">
+                        <div class="widget-data">
+                           <div class="weight-700 font-24 text-dark">10,000</div>
+                           <div class="font-14 text-secondary weight-500">
+                           Liters 
+                           </div>
+                        </div>
+                        <div class="widget-icon">
+                           <div class="icon" data-color="#00eccf">
+                              <i class="icon-copy dw dw-calendar1"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                  <div class="card-box height-100-p widget-style3">
+                     <div class="d-flex flex-wrap">
+                        <div class="widget-data">
+                           <div class="weight-700 font-24 text-dark">
+                           200 liters 
+                           </div>
+                           <form action="/action1/" method="post">
+                           <div class="font-14 text-secondary weight-500">
+                              Requirements
+                           </div>
+                           </form>
+                        </div>
+                        <div class="widget-icon">
+                           <div class="icon" data-color="#ff5b5b">
+                              <span class="icon-copy ti-heart"></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            <form method="post" action="/action1/" name ="action1">
+                  {% csrf_token %}
+               <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;top: 20px;position: relative;">Transfer</button>
+            </form>
+            <div class="title pb-20" style="
+            position: relative;
+            top: 239px;
+            left: -707px">
+               <h2 class="h3 mb-0">Result - {{ ans }}/100</h2>
+            </div>
+         
+                            
+      <script src="/static/vendors/scripts/core.js"></script>
+      <script src="/static/vendors/scripts/script.min.js"></script>
+      <script src="/static/vendors/scripts/process.js"></script>
+      <script src="/static/vendors/scripts/layout-settings.js"></script>
+      <script src="/static/src/plugins/apexcharts/apexcharts.min.js"></script>
+      <script src="/static/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+      <script src="/static/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+      <script src="/static/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+      <script src="/static/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+      <script src="/static/vendors/scripts/dashboard3.js"></script>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript
+         ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+         ></iframe
+      ></noscript>
+      <div>
+      
+         <div class="title pb-20">
+            <h2 class="h3 mb-0">Calculate Quality</h2>
+         </div>
+      <form method="post" action="/calculate/"  name="calc">
+         {% csrf_token %}
+         <div class="form-row">
+           <div class="col">
+             <input type="text" class="form-control" placeholder="pH" name="ph">
+           </div>
+           <div class="col">
+             <input type="text" class="form-control" placeholder="Temp" name="temp">
+           </div>
+           <div class="col">
+             <input type="text" class="form-control" placeholder="Turbi" name="turbi">
+           </div>
+           <button clas="btn btn-primary" type="submit">calculate</button>
+
+
+         </div>
+       </form>
+       </div>
+      <!-- End Google Tag Manager (noscript) -->
+   </body>
+</html>

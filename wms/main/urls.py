@@ -12,4 +12,7 @@ urlpatterns = [
     path("deploy/", views.deployContract, name="deploy"),
     path("pushreq/", views.admin, name="adminreq"),
     path("invoice/", views.invoice, name="invoice"),
+    path("storage/", views.storage, name="storage"),
+    path("action1/", views.deployContract, name="action1"),
+    path("calculate/", views.calculate, name="calc"),
 ]
