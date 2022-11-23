@@ -116,7 +116,14 @@
           <div class="col-md-6 col-lg-5">
             <div class="register-box bg-white box-shadow border-radius-10">
               <div class="wizard-content">
-                <form class="tab-wizard2 wizard-circle wizard">
+                <form
+                  id="signUp"
+                  class="tab-wizard2 wizard-circle wizard"
+                  name="signup"
+                  action="/signup/"
+                  method="post"
+                >
+                  {% csrf_token %}
                   <h5>Basic Account Credentials</h5>
                   <section>
                     <div class="form-wrap max-width-600 mx-auto">
@@ -125,19 +132,21 @@
                           >Email Address*</label
                         >
                         <div class="col-sm-8">
-                          <input type="email" class="form-control" />
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Username*</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                          />
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Password*</label>
                         <div class="col-sm-8">
-                          <input type="password" class="form-control" />
+                          <input
+                            type="password"
+                            name="password"
+                            class="form-control"
+                          />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -160,37 +169,6 @@
                         >
                         <div class="col-sm-8">
                           <input type="text" class="form-control" />
-                        </div>
-                      </div>
-                      <div class="form-group row align-items-center">
-                        <label class="col-sm-4 col-form-label">Gender*</label>
-                        <div class="col-sm-8">
-                          <div
-                            class="custom-control custom-radio custom-control-inline pb-0"
-                          >
-                            <input
-                              type="radio"
-                              id="male"
-                              name="gender"
-                              class="custom-control-input"
-                            />
-                            <label class="custom-control-label" for="male"
-                              >Male</label
-                            >
-                          </div>
-                          <div
-                            class="custom-control custom-radio custom-control-inline pb-0"
-                          >
-                            <input
-                              type="radio"
-                              id="female"
-                              name="gender"
-                              class="custom-control-input"
-                            />
-                            <label class="custom-control-label" for="female"
-                              >Female</label
-                            >
-                          </div>
                         </div>
                       </div>
                       <div class="form-group row">
@@ -218,11 +196,12 @@
                         <div class="col-sm-8">
                           <select
                             class="form-control selectpicker"
+                            name="society"
                             title="Society Name"
                           >
-                            <option value="Lodha">Lodha</option>
-                            <option value="Green Park">Green Park</option>
-                            <option value="Landmark">Landmark</option>
+                            <option value="s1">Lodha</option>
+                            <option value="s2">Green Park</option>
+                            <option value="s3">Landmark</option>
                           </select>
                         </div>
                       </div>
@@ -231,7 +210,11 @@
                           >MetaMask Address</label
                         >
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" />
+                          <input
+                            type="text"
+                            name="metamask"
+                            class="form-control"
+                          />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -239,7 +222,7 @@
                           >Flat Number</label
                         >
                         <div class="col-sm-3">
-                          <input type="text" class="form-control" />
+                          <input type="text" name="flat" class="form-control" />
                         </div>
                       </div>
                     </div>
@@ -283,7 +266,9 @@
             Now you are using a decentralized system for water management.
           </div>
           <div class="modal-footer justify-content-center">
-            <a href="login.html" class="btn btn-primary">Done</a>
+            <button type="submit" form="signUp" class="btn btn-primary">
+              Done
+            </button>
           </div>
         </div>
       </div>
