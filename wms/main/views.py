@@ -1,8 +1,11 @@
+
 from django.shortcuts import render,HttpResponse, loader
 import pyrebase
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from django.shortcuts import render, HttpResponse, loader
+
 # from django.conf import settings
 # settings.configure()
 
@@ -16,22 +19,26 @@ print(k)
 
 def index(request):
 
-    context={}
-    html_template = loader.get_template( 'landing.html' )
-
+    context = {}
+    html_template = loader.get_template("landing.html")
 
     return HttpResponse(html_template.render(context, request))
 
 
 def login(request):
-    return render(request,'login.html')
+    return render(request, "login.html")
 
 
 def register(request):
-    return render(request,'register.html')
+    return render(request, "register.html")
 
+
+def admin(request):
+    return render(request, "admin.html")
 
 
 def dashboard(request):
-    return render(request,"dashboard.html")
+    return render(request, "dashboard.html")
+
+
 # Create your views here.
