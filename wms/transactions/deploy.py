@@ -25,7 +25,7 @@ def deploy():
     # Connecting
     w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
     chainId = 1337
-    myAddr = "0xd5F09bB17ce1035413333741EFdfd320cE9Fa1ed"
+    myAddr = os.getenv("SENDER_ADDR")
     privateKey = os.getenv("PRIVATE_KEY")
 
     # Create the contract
@@ -62,7 +62,7 @@ def deploy():
 
     # print(sTxn.functions.createTransaction().call())
 
-    recAddr = "0x0132bD20aba6f97B73Fa0050b43fbE57019DfD63"
+    recAddr = os.getenv("RECCR_ADDR")
 
     storeTxn = sTxn.functions.createTransaction(
         myAddr, recAddr, 20, 10
