@@ -3,7 +3,7 @@
    <head>
       <!-- Basic Page Info -->
       <meta charset="utf-8" />
-      <title>Hydro App - Water Resource Management System</title>
+      <title>HydroSense - Water Resource Management System</title>
 
       <!-- Site favicon -->
       <link
@@ -11,6 +11,10 @@
          sizes="180x180"
          href="/static/vendors/images/apple-touch-icon.png"
       />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       <link
          rel="icon"
          type="image/png"
@@ -91,7 +95,8 @@
          <div class="pre-loader-box">
             <div class="loader-logo">
                <!-- insert custom app logo here - svg format -->
-               <img src="/static/vendors/images/deskapp-logo.svg" alt="" />
+               <!-- <img src="/static/vendors/images/deskapp-logo.svg" alt="" /> -->
+               <p style="color: black">HydroSense</p>
             </div>
             <div class="loader-progress" id="progress_div">
                <div class="bar" id="bar1"></div>
@@ -109,7 +114,7 @@
                data-toggle="header_search"
             ></div>
             <div class="title pb-20">
-               <h2 class="h3 mb-0">Management Overview</h2>
+               <h2 class="h3 mt-4">Dashboard</h2>
             </div>
             <!-- <div class="header-search">
                <form>
@@ -303,7 +308,7 @@
       <div class="left-side-bar">
          <div class="brand-logo">
             <a href="/" class="--nav-btn">
-               <img
+               <!-- <img
                   src="/static/vendors/images/deskapp-logo.svg"
                   alt=""
                   class="dark-logo"
@@ -312,7 +317,8 @@
                   src="/static/vendors/images/deskapp-logo-white.svg"
                   alt=""
                   class="light-logo"
-               />
+               /> -->
+               <p style="color: white">HydroSense</p>
             </a>
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                <i class="ion-close-round"></i>
@@ -408,14 +414,16 @@
                   <div class="card-box height-100-p widget-style3">
                      <div class="d-flex flex-wrap">
                         <div class="widget-data">
-                           <div class="weight-700 font-24 text-dark">75</div>
+                           <div class="weight-700 font-24 text-dark">75L</div>
                            <div class="font-14 text-secondary weight-500">
-                              Events
+                              Quantity
                            </div>
                         </div>
                         <div class="widget-icon">
                            <div class="icon" data-color="#00eccf">
-                              <i class="icon-copy dw dw-calendar1"></i>
+                              <span class="material-symbols-outlined">
+                                 water_drop
+                                 </span>
                            </div>
                         </div>
                      </div>
@@ -426,7 +434,7 @@
                      <div class="d-flex flex-wrap">
                         <div class="widget-data">
                            <div class="weight-700 font-24 text-dark">
-                              124,551
+                              1,245
                            </div>
                            <div class="font-14 text-secondary weight-500">
                               Total transactions
@@ -434,7 +442,9 @@
                         </div>
                         <div class="widget-icon">
                            <div class="icon" data-color="#ff5b5b">
-                              <span class="icon-copy ti-heart"></span>
+                              <span class="material-symbols-outlined">
+                                 receipt_long
+                                 </span>
                            </div>
                         </div>
                      </div>
@@ -444,17 +454,16 @@
                   <div class="card-box height-100-p widget-style3">
                      <div class="d-flex flex-wrap">
                         <div class="widget-data">
-                           <div class="weight-700 font-24 text-dark">400+</div>
+                           <div class="weight-700 font-24 text-dark">74%</div>
                            <div class="font-14 text-secondary weight-500">
-                              Total Staff
+                              Quality
                            </div>
                         </div>
                         <div class="widget-icon">
                            <div class="icon">
-                              <i
-                                 class="icon-copy fa fa-stethoscope"
-                                 aria-hidden="true"
-                              ></i>
+                              <span class="material-symbols-outlined">
+                                 water_ph
+                                 </span>
                            </div>
                         </div>
                      </div>
@@ -465,18 +474,17 @@
                      <div class="d-flex flex-wrap">
                         <div class="widget-data">
                            <div class="weight-700 font-24 text-dark">
-                              $50,000
+                              ₹50,000
                            </div>
                            <div class="font-14 text-secondary weight-500">
-                              Earning
+                              Amount
                            </div>
                         </div>
                         <div class="widget-icon">
                            <div class="icon" data-color="#09cc06">
-                              <i
-                                 class="icon-copy fa fa-money"
-                                 aria-hidden="true"
-                              ></i>
+                              <span class="material-symbols-outlined">
+                                 currency_rupee
+                                 </span>
                            </div>
                         </div>
                      </div>
@@ -495,9 +503,6 @@
                            <select
                               class="form-control form-control-sm selectpicker"
                            >
-                              <option value="">Last Week</option>
-                              <option value="">Last Month</option>
-                              <option value="">Last 6 Month</option>
                               <option value="">Last 1 year</option>
                            </select>
                         </div>
@@ -574,7 +579,7 @@
                <div class="col-lg-4 col-md-6 mb-20">
                   <div class="card-box height-100-p pd-20 min-height-200px">
                      <div class="d-flex justify-content-between">
-                        <div class="h5 mb-0">Diseases Report</div>
+                        <div class="h5 mb-0">Quality Report</div>
                         <div class="dropdown">
                            <a
                               class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"

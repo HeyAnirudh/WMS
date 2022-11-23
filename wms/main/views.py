@@ -1,6 +1,6 @@
+from django.shortcuts import render, HttpResponse, loader
 
-from django.shortcuts import render,HttpResponse, loader
-import pyrebase
+# import pyrebase4
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -16,8 +16,8 @@ from datetime import date
 credJson = credentials.Certificate("wms/service_key.json")
 firebase_admin.initialize_app(credJson)
 db = firestore.client()
-db.collection('admin-data').document('s3').set({"Date":"23112022","Quantity":10})
-k=db.collection('admin-data').document('s3').set({"Date":"23112022","Quantity":10})
+db.collection("admin-data").document("s3").set({"Date": "23112022", "Quantity": 10})
+k = db.collection("admin-data").document("s3").set({"Date": "23112022", "Quantity": 10})
 print(k)
 
 
@@ -38,16 +38,22 @@ def register(request):
 
 
 def admin(request):
-    storage=request.POST.get("storage_id")
+    storage = request.POST.get("storage_id")
     print(storage)
-    quantity= request.POST.get("quantity")
-    today=date.today()
-    db.collection('admin-data').document(str(storage)).set({"Date":str(today),"Quantity":quantity})
+    quantity = request.POST.get("quantity")
+    today = date.today()
+    db.collection("admin-data").document(str(storage)).set(
+        {"Date": str(today), "Quantity": quantity}
+    )
     return render(request, "admin.html")
 
 
 def dashboard(request):
     return render(request, "dashboard.html")
+
+
+def invoice(request):
+    return render(request, "invoice.html")
 
 
 def trial(request):

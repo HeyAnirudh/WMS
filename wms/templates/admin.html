@@ -3,7 +3,7 @@
   <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>Hydro App - Water Resource Management System</title>
+    <title>HydroSense - Water Resource Management System</title>
 
     <!-- Site favicon -->
     <link
@@ -87,14 +87,13 @@
     <!-- End Google Tag Manager -->
   </head>
   <body class="login-page">
-
     <div class="login-header box-shadow">
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
       >
         <div class="brand-logo">
           <a href="login.html">
-            <p style="color: black">HYDRO APP</p>
+            <p style="color: black">HydroSense</p>
             <!-- <img src="vendors/images/deskapp-logo.svg" alt="" /> -->
           </a>
         </div>
@@ -118,9 +117,9 @@
     <div id="admin-form" class="bg-white border-radius-10 box-shadow">
       <h2 class="text-center text-primary mb-10">Add Requirement</h2>
 
-        <form name="admin" action="/pushreq/" method="post">	
-          {% csrf_token %}
-                    
+      <form name="admin" action="/pushreq/" method="post">
+        {% csrf_token %}
+
         <div class="input-group custom">
           <input
             id="input-username"
@@ -154,14 +153,14 @@
           <div class="col-sm-12">
             <div class="input-group mb-0">
               <div class="form-group">
-	            	<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom:3.75rem">Add</button>
-	            </div>
-              <!-- <input
-                id="btn-signin"
-                class="btn btn-primary btn-lg btn-block"
-                type="submit"
-                value="Add"
-              /> -->
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg btn-block"
+                  style="margin-bottom: 3.75rem"
+                >
+                  Add
+                </button>
+              </div>
             </div>
           </div>
         </div>

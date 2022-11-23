@@ -11,4 +11,5 @@ urlpatterns = [
     path("trial/", views.trial, name="trial"),
     path("deploy/", views.deployContract, name="deploy"),
     path("pushreq/", views.admin, name="adminreq"),
+    path("invoice/", views.invoice, name="invoice"),
 ]
