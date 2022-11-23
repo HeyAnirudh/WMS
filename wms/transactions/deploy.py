@@ -1,0 +1,83 @@
+from solcx import compile_standard, install_solc
+import json
+from web3 import Web3
+from dotenv import load_dotenv
+import os
+import asyncio
+
+load_dotenv()
+install_solc("0.8.8")
+
+
+def deploy():
+    with open("./transactions/transaction.json", "r") as file:
+        compiledSol = json.load(file)
+
+    # Get Bytecode
+
+    bytecode = compiledSol["contracts"]["SimpleStorage.sol"]["Transaction"]["evm"][
+        "bytecode"
+    ]["object"]
+
+    # Get ABI
+    abi = compiledSol["contracts"]["SimpleStorage.sol"]["Transaction"]["abi"]
+
+    # Connecting
+    w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
+    chainId = 1337
+    myAddr = "0x2ccF77B49b7e8F3B3E9E018592a4aD2Fb1606A2E"
+    privateKey = os.getenv("PRIVATE_KEY")
+
+    # Create the contract
+    SimpleTransaction = w3.eth.contract(abi=abi, bytecode=bytecode)
+    # Get latest transaction
+    nonce = w3.eth.getTransactionCount(myAddr)
+
+    # 1. Build a transaction
+    # 2. Sign a transaction
+    # 3. Send a transaction
+
+    # 1
+    transaction = SimpleTransaction.constructor().buildTransaction(
+        {
+            "gasPrice": w3.eth.gas_price,
+            "chainId": chainId,
+            "from": myAddr,
+            "nonce": nonce,
+        }
+    )
+
+    # 2
+    signedTxn = w3.eth.account.sign_transaction(transaction, private_key=privateKey)
+
+    # 3
+    txHash = w3.eth.send_raw_transaction(signedTxn.rawTransaction)
+    txReceipt = w3.eth.wait_for_transaction_receipt(txHash)
+
+    # Working with contract
+    # Contract addr, ABI
+    sTxn = w3.eth.contract(address=txReceipt.contractAddress, abi=abi)
+    # Call -> Simulate making the call and getting a return value
+    # Transact -> Actually make a state change
+
+    # print(sTxn.functions.createTransaction().call())
+
+    recAddr = "0x4ABD30ccd06a48335c0b98664c09a23C80eB3d89"
+
+    storeTxn = sTxn.functions.createTransaction(
+        myAddr, recAddr, 20, 10
+    ).buildTransaction(
+        {
+            "gasPrice": w3.eth.gas_price,
+            "chainId": chainId,
+            "from": myAddr,
+            "nonce": nonce + 1,
+        }
+    )
+
+    signStoreTxn = w3.eth.account.sign_transaction(storeTxn, private_key=privateKey)
+    storeTxnHash = w3.eth.send_raw_transaction(signStoreTxn.rawTransaction)
+    storeTxnReceipt = w3.eth.wait_for_transaction_receipt(storeTxnHash)
+
+
+# print(sTxn.functions.retrieve().call())

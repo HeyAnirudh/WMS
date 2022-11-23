@@ -8,4 +8,6 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("admin-main/", views.admin, name="admin"),
     path("dashboard/", views.dashboard, name="dashboard"),
+    path("trial/", views.trial, name="trial"),
+    path("deploy/", views.deployContract, name="deploy"),
 ]

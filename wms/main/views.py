@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, loader
+from transactions.deploy import deploy
 
 # from django.conf import settings
 # settings.configure()
@@ -26,6 +27,14 @@ def admin(request):
 
 def dashboard(request):
     return render(request, "dashboard.html")
+
+
+def trial(request):
+    return render(request, "trial.html")
+
+
+def deployContract(request):
+    deploy()
 
 
 # Create your views here.
