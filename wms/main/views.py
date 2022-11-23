@@ -24,4 +24,8 @@ def admin(request):
     return render(request, "admin.html")
 
 
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+
 # Create your views here.
