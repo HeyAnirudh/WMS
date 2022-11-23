@@ -120,6 +120,17 @@
       <form name="admin" action="/pushreq/" method="post">
         {% csrf_token %}
 
+        <div>
+          <label for="cars">City:</label>
+
+          <select name="cars" id="cars" class="border-radius-5 p-2 mb-4">
+            <option value="volvo">Delhi</option>
+            <option value="saab">Mumbai</option>
+            <option value="saab">Hyderabad</option>
+            <option value="saab">Kolkata</option>
+          </select>
+        </div>
+
         <div class="input-group custom">
           <input
             id="input-username"
@@ -149,6 +160,7 @@
             </div>
           </div>
         </div>
+
         <div class="row">
           <div class="col-sm-12">
             <div class="input-group mb-0">
