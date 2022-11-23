@@ -6,6 +6,9 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from django.shortcuts import render, HttpResponse, loader
 
+import datetime
+from datetime import date
+
 # from django.conf import settings
 # settings.configure()
 
@@ -34,6 +37,11 @@ def register(request):
 
 
 def admin(request):
+    storage=request.POST.get("storage_id")
+    print(storage)
+    quantity= request.POST.get("quantity")
+    today=date.today()
+    db.collection('admin-data').document(str(storage)).set({"Date":str(today),"Quantity":quantity})
     return render(request, "admin.html")
 
 

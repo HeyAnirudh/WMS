@@ -87,6 +87,7 @@
     <!-- End Google Tag Manager -->
   </head>
   <body class="login-page">
+
     <div class="login-header box-shadow">
       <div
         class="container-fluid d-flex justify-content-between align-items-center"
@@ -113,15 +114,20 @@
       ></script>
       <script src="/static/vendors/scripts/admin-chart.js"></script>
     </div>
+
     <div id="admin-form" class="bg-white border-radius-10 box-shadow">
       <h2 class="text-center text-primary mb-10">Add Requirement</h2>
-      <form>
+
+        <form name="admin" action="/pushreq/" method="post">	
+          {% csrf_token %}
+                    
         <div class="input-group custom">
           <input
             id="input-username"
             type="text"
             class="form-control form-control-lg"
             placeholder="Storage Id"
+            name="storage_id"
           />
         </div>
         <div class="input-group custom">
@@ -130,6 +136,7 @@
             type="text"
             class="form-control form-control-lg"
             placeholder="Quantity"
+            name="quantity"
           />
         </div>
         <div class="row">
@@ -146,12 +153,15 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="input-group mb-0">
-              <input
+              <div class="form-group">
+	            	<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom:3.75rem">Add</button>
+	            </div>
+              <!-- <input
                 id="btn-signin"
                 class="btn btn-primary btn-lg btn-block"
                 type="submit"
                 value="Add"
-              />
+              /> -->
             </div>
           </div>
         </div>
