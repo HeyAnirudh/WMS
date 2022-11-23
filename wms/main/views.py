@@ -1,6 +1,17 @@
 from django.shortcuts import render,HttpResponse, loader
+import pyrebase
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 # from django.conf import settings
 # settings.configure()
+
+credJson = credentials.Certificate("wms/service_key.json")
+firebase_admin.initialize_app(credJson)
+db = firestore.client()
+db.collection('admin-data').document('s3').set({"Date":"23112022","Quantity":10})
+k=db.collection('admin-data').document('s3').set({"Date":"23112022","Quantity":10})
+print(k)
 
 
 def index(request):
