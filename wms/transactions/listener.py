@@ -19,7 +19,7 @@ abi = compiledSol["contracts"]["SimpleStorage.sol"]["Transaction"]["abi"]
 
 w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))
 chainId = 1337
-myAddr = "0x2ccF77B49b7e8F3B3E9E018592a4aD2Fb1606A2E"
+myAddr = "0xd5F09bB17ce1035413333741EFdfd320cE9Fa1ed"
 privateKey = os.getenv("PRIVATE_KEY")
 
 contract = w3.eth.contract(abi=abi, bytecode=bytecode)
