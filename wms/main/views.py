@@ -97,6 +97,41 @@ def waterTower(request):
     return render(request, "waterTower.html")
 
 
+def signup(request):
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    metamask = request.POST.get("metamask")
+    flat = request.POST.get("flat")
+    society = request.POST.get("society")
+    db.collection("user-registration").document(str(email)).set(
+        {
+            "email": email,
+            "password": password,
+            "metamask": metamask,
+            "flat": flat,
+            "society": society,
+        }
+    )
+    return render(request, "landing.html")
+
+
+def signin(request):
+    email = request.POST.get("email")
+    password = request.POST.get("password")
+    doc_ref = db.collection("user-registration").document(str(email))
+    doc = doc_ref.get()
+    if doc.exists:
+        doc = doc.to_dict()
+        if password == doc["password"]:
+            return render(request, "landing.html")
+        else:
+            print("Wrong Password")
+            return render(request, "login.html")
+    else:
+        print("No such user!")
+        return render(request, "register.html")
+
+
 def deployContract(request):
     deploy()
     return render(request, "admin.html")

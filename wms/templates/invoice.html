@@ -12,9 +12,6 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet"
@@ -105,24 +102,14 @@
                 <ul id="accordion-menu">
                     </li>
                     <li>
-                        <a href="/pages/invoice.html" class="dropdown-toggle no-arrow --nav-btn">
-                            <span class="material-symbols-outlined">
-                                dashboard
-                                </span><span class="mtext">Dashboard</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="/pages/invoice.html" class="dropdown-toggle no-arrow --nav-btn">
+                        <a href="/invoice/" class="dropdown-toggle no-arrow --nav-btn">
                             <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Invoice</span>
                         </a>
 
                     </li>
                     <li>
                         <a href="/" class="dropdown-toggle no-arrow --nav-btn">
-                            <span class="material-symbols-outlined">
-                                logout
-                                </span><span class="mtext">Logout</span>
+                            <span class="micon bi bi-chat-right-dots"></span><span class="mtext">Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -132,13 +119,50 @@
     <div class="mobile-menu-overlay"></div>
 
     <div class="main-container">
-        <div>
-            <form>
-                <input type="text" placeholder="Enter the quantity of water required in L" />
-                <button type="submit">Submit Request</button>
-            </form>
-        </div>
-
+    </div>
+    <div style="position: relative; left: 300px">
+        <table class="table" style="width: 79%; background-color: white;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Transaction Hash</th>
+                <th scope="col">Quality</th>
+                <th scope="col">Quantity (in L)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>02-11-2022</td>
+                <td>0x7589475fefc46ce9fb75872ca3aa67b5645b26fc3424c2ade6e118f47f48ea17</td>
+                <td>80</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>01-10-2022</td>
+                <td>0x3c6312a7ac80fabee7b39925070307d55cab79c66086c91a9487b35a7a6f0f00</td>
+                <td>76</td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>02-09-2022</td>
+                <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
+                <td>82</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>02-08-2022</td>
+                <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
+                <td>69</td>
+                <td>12</td>
+              </tr>
+              
+            </tbody>
+          </table>
     </div>
 
     <!-- js -->

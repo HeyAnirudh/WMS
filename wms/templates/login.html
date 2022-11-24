@@ -112,7 +112,8 @@
               <div class="login-title">
                 <h2 class="text-center text-primary">Login To HydroSense</h2>
               </div>
-              <form>
+              <form action="/signin/" method="post">
+                {% csrf_token %}
                 <!-- <div class="select-role">
                            <div
                               class="btn-group btn-group-toggle"
@@ -152,6 +153,7 @@
                   <input
                     id="input-username"
                     type="text"
+                    name="email"
                     class="form-control form-control-lg"
                     placeholder="Username"
                   />
@@ -165,6 +167,7 @@
                   <input
                     id="input-pwd"
                     type="password"
+                    name="password"
                     class="form-control form-control-lg"
                     placeholder="**********"
                   />
@@ -203,12 +206,13 @@
 											use code for form submit
 											<input id="btn-signin" class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
 										-->
-                      <input
+                      <button
                         id="btn-signin"
                         class="btn btn-primary btn-lg btn-block"
                         type="submit"
-                        value="Sign In"
-                      />
+                      >
+                        Sign In
+                      </button>
                       <!-- <a
                                     id="btn-signin"
                                     class="btn btn-primary btn-lg btn-block"
@@ -246,32 +250,6 @@
 
     <!-- Add additional logic below -->
     <!-- scrpt to control the sign in form -->
-    <script>
-      const btnSignin = document.querySelector("#btn-signin");
-      let inputUsername = document.getElementById("input-username");
-      let inputPwd = document.querySelector("#input-pwd");
-      let checkbtnRememberMe = document.querySelector("#checkbtn-remember-me");
-
-      function signIn(e) {
-        e.preventDefault();
-        //do something with the input values
-        console.log(inputUsername.value, inputPwd.value);
-
-        //validate the input
-        //authenticate
-        //load the dashboard
-
-        //reset the UI
-        const pathToIndex =
-          `${window.location.href}`.replace("login", "index") + "";
-        console.log(pathToIndex);
-        window.location.href = pathToIndex;
-
-        inputPwd = inputUsername = "";
-      }
-
-      btnSignin.addEventListener("click", signIn);
-    </script>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript
