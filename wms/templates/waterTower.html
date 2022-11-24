@@ -132,16 +132,15 @@
                </div>
                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
                   <div class="card-box height-100-p widget-style3">
-                      <div class="d-flex flex-wrap">
+                     <div class="d-flex flex-wrap">
                         <div class="widget-data">
                            <div class="weight-700 font-24 text-dark">
                            200 liters 
+                           
                         </div>
-                           <form action="/action1/" method="post">
                            <div class="font-14 text-secondary weight-500">
                               Requirements
                            </div>
-                           </form>
                         </div>
                         <div class="widget-icon">
                            <div class="icon" data-color="#ff5b5b">
@@ -151,8 +150,10 @@
                      </div>
                   </div>
                </div>
-            <form method="post" action="/action1/" name ="action1">
-                {% csrf_token %}
+               <form method="post" action="/deploy/" name ="deploy">
+                  {% csrf_token %}
+               <input type="hidden" name="quantity" value="200" />
+               <input type="hidden" name="quality" value={{ans}} />
                <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;top: 20px;position: relative;">Transfer</button>
             </form>
             <div class="title pb-20" style="

@@ -9,7 +9,7 @@ load_dotenv()
 install_solc("0.8.8")
 
 
-def deploy():
+def deploy(sender, receiver, quantity, quality):
     with open("./transactions/transaction.json", "r") as file:
         compiledSol = json.load(file)
 
@@ -62,10 +62,8 @@ def deploy():
 
     # print(sTxn.functions.createTransaction().call())
 
-    recAddr = os.getenv("RECCR_ADDR")
-
     storeTxn = sTxn.functions.createTransaction(
-        myAddr, recAddr, 20, 10
+        sender, receiver, quality, quantity
     ).buildTransaction(
         {
             "gasPrice": w3.eth.gas_price,
@@ -78,6 +76,8 @@ def deploy():
     signStoreTxn = w3.eth.account.sign_transaction(storeTxn, private_key=privateKey)
     storeTxnHash = w3.eth.send_raw_transaction(signStoreTxn.rawTransaction)
     storeTxnReceipt = w3.eth.wait_for_transaction_receipt(storeTxnHash)
+
+    return f"{storeTxnReceipt.transactionHash}"
 
 
 # print(sTxn.functions.retrieve().call())

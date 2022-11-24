@@ -129,6 +129,7 @@
                 <th scope="col">Transaction Hash</th>
                 <th scope="col">Quality</th>
                 <th scope="col">Quantity (in L)</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -138,6 +139,7 @@
                 <td>0x7589475fefc46ce9fb75872ca3aa67b5645b26fc3424c2ade6e118f47f48ea17</td>
                 <td>80</td>
                 <td>10</td>
+                <td>Request Sent</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -145,6 +147,7 @@
                 <td>0x3c6312a7ac80fabee7b39925070307d55cab79c66086c91a9487b35a7a6f0f00</td>
                 <td>76</td>
                 <td>15</td>
+                <td>Received</td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -152,6 +155,7 @@
                 <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
                 <td>82</td>
                 <td>10</td>
+                <td>Received</td>
               </tr>
               <tr>
                 <th scope="row">4</th>
@@ -159,10 +163,37 @@
                 <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
                 <td>69</td>
                 <td>12</td>
+                <td>Received</td>
               </tr>
               
             </tbody>
           </table>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Request Water</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Request Water</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="submitreq" action="/requestwater/" method="post">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Quantity: </label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" form="submitreq" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Request</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 
     <!-- js -->

@@ -8,7 +8,7 @@ import asyncio
 load_dotenv()
 install_solc("0.8.8")
 
-with open("./transaction.json", "r") as file:
+with open("./transactions/transaction.json", "r") as file:
     compiledSol = json.load(file)
 
 bytecode = compiledSol["contracts"]["SimpleStorage.sol"]["Transaction"]["evm"][
@@ -36,7 +36,7 @@ async def log_loop(event_filter, poll_interval):
         await asyncio.sleep(poll_interval)
 
 
-def main():
+def listen():
     event_filter = contract.events.TransactionSent.createFilter(fromBlock="latest")
     # block_filter = web3.eth.filter('latest')
     # tx_filter = web3.eth.filter('pending')
@@ -48,7 +48,3 @@ def main():
     finally:
         # close loop to free up system resources
         loop.close()
-
-
-if __name__ == "__main__":
-    main()

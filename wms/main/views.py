@@ -9,6 +9,7 @@ from transactions.deploy import deploy
 
 import datetime
 from datetime import date
+import os
 
 # from django.conf import settings
 # settings.configure()
@@ -133,7 +134,14 @@ def signin(request):
 
 
 def deployContract(request):
-    deploy()
+    # sender = request.POST.get("sender")
+    # receiver = request.POST.get("receiver")
+    sender = os.getenv("TOWER_ADDR")
+    receiver = os.getenv("STORAGE_ADDR")
+    quality = int(request.POST.get("quality"))
+    quantity = int(request.POST.get("quantity"))
+    print(sender)
+    deploy(sender, receiver, quantity, quality)
     return render(request, "admin.html")
 
 
@@ -181,7 +189,7 @@ def calculate(request):
             // 3
         ) * 10
     print(context["ans"])
-    return render(request, "storage.html", context)
+    return render(request, "waterTower.html", context)
 
 
 # Create your views here.
