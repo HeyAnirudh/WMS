@@ -115,13 +115,13 @@
             <table class="table">
   <thead>
     <tr>
-      <th scope="col">Date </th>
+      <th scope="col">Flat No </th>
       <th scope="col">Requested Quant</th>
       <th scope="col">Approve</th>
     </tr>
   </thead>
 
-  {% for i,j in set %} 
+  {% for i,j, k in set %} 
  
   
 
@@ -130,6 +130,7 @@
      <th scope="col">{{ j }}</th>
      <th scope="col"><form method="post" action="/deploy/" name ="deploy">
       {% csrf_token %}
+      <input type="hidden" value={{k}} name="email" />
      <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;top: 20px;position: relative;">Transfer</button>
   </form></th>
    </tr>

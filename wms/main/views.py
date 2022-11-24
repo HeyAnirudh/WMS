@@ -53,9 +53,9 @@ def temp_Calc(temp):
 credJson = credentials.Certificate("wms/service_key.json")
 firebase_admin.initialize_app(credJson)
 db = firestore.client()
-db.collection("admin-data").document("s3").set({"Date": "23112022", "Quantity": 10})
-k = db.collection("admin-data").document("s3").set({"Date": "23112022", "Quantity": 10})
-print(k)
+# db.collection("admin-data").document("s3").set({"Date": "23112022", "Quantity": 10})
+# k = db.collection("admin-data").document("s3").set({"Date": "23112022", "Quantity": 10})
+# print(k)
 
 
 def index(request):
@@ -78,13 +78,34 @@ def admin(request):
     context = {}
     flat = []
     quant = []
-    storage = request.POST.get("storage_id")
-    print(storage)
-    quantity = request.POST.get("quantity")
+    flatno = request.POST.get("flatno")
+    email = request.POST.get("email")
+    print(flatno, email)
     today = date.today()
-    db.collection("admin-data").document(str(storage)).set(
-        {"Date": str(today), "Quantity": quantity}
-    )
+    if email:
+        doc = db.collection("user-request").document(str(email))
+        data = doc.get()
+        data = data.to_dict()
+        quantity = data["quantity"]
+        data["email"] = email
+        db.collection("user-request").document(str(email)).delete()
+        db.collection("storage").document(str(email)).set(data)
+        doc = db.collection("storage-facilites").document("s1")
+        data = doc.get()
+        data = data.to_dict()
+        data["available"] = data["available"] + quantity
+        print("data", data)
+        db.collection("storage-facilites").document("s1").set(data)
+
+        txn = {
+            "hash": "0x60fa00aabaa02d42a8fa6773752ed6f86433492cb387d9cc8d7b090dfdadfdf3",
+            "status": "Req Approved",
+        }
+        doc = db.collection("transactions").document(email)
+        data = doc.get()
+        data = data.to_dict()["transactions"]
+        data.append(txn)
+        db.collection("transactions").document(email).set({"transactions": data})
 
     data = db.collection("user-request").get()
     for doc in data:
@@ -93,7 +114,9 @@ def admin(request):
         quant.append(a["quantity"])
         print(a)
     context["set"] = zip(flat, quant)
+
     print(context)
+
     return render(request, "admin.html", context)
 
 
@@ -115,7 +138,14 @@ def trial(request):
 
 
 def waterTower(request):
-    return render(request, "waterTower.html")
+    context = {}
+    doc = db.collection("storage-facilites").document("s1")
+    data = doc.get()
+    data = data.to_dict()
+
+    context = data
+
+    return render(request, "waterTower.html", context)
 
 
 def signup(request):
@@ -159,63 +189,86 @@ def signin(request):
 def deployContract(request):
     # sender = request.POST.get("sender")
     # receiver = request.POST.get("receiver")
-    sender = os.getenv("TOWER_ADDR")
-    receiver = os.getenv("STORAGE_ADDR")
-    # quality = int(request.POST.get("quality"))
+    email = request.POST.get("email")
+    sender = os.getenv("STORAGE_ADDR")
+    receiver = os.getenv("USER_ADDR")
     quality = 80
-    # quantity = int(request.POST.get("quantity"))
-    quantity = 28
+    doc_ref = db.collection("storage").document(str(email))
+    data = doc_ref.get()
+    quantity = data.to_dict()["quantity"]
+    # quantity = 28
     print(sender)
-    deploy(sender, receiver, quantity, quality)
-    return render(request, "storage.html")
+    txnhash = deploy(sender, receiver, quantity, quality)
+    txn = {"hash": txnhash, "status": "To User"}
+
+    doc = db.collection("transactions").document(email)
+    data = doc.get()
+    data = data.to_dict()["transactions"]
+    data.append(txn)
+    db.collection("transactions").document(email).set({"transactions": data})
+
+    db.collection("storage").document(str(email)).delete()
+
+    return HttpResponseRedirect("/storage/")
 
 
 def deployContract2(request):
     # sender = request.POST.get("sender")
     # receiver = request.POST.get("receiver")
-    sender = os.getenv("STORAGE_ADDR")
-    receiver = os.getenv("USER_ADDR")
+    sender = os.getenv("TOWER_ADDR")
+    receiver = os.getenv("STORAGE_ADDR")
     quality = int(request.POST.get("quality"))
     quantity = int(request.POST.get("quantity"))
-    print(sender)
-    deploy(sender, receiver, quantity, quality)
-    return render(request, "waterTower.html")
+    email = "avishjain0@gmail.com"
+    print(quality, quantity)
+    txnhash = deploy(sender, receiver, quantity, quality)
+
+    txn = {"hash": txnhash, "status": "Storage Facility"}
+
+    db.collection("storage-facilites").document("s1").set(
+        {
+            "capacity": 10000,
+            "available": 0,
+        }
+    )
+    doc = db.collection("transactions").document(email)
+    data = doc.get()
+    data = data.to_dict()["transactions"]
+    data.append(txn)
+    db.collection("transactions").document(email).set({"transactions": data})
+
+    doc = db.collection("storage-facilites").document("s2")
+    data = doc.get()
+    data = data.to_dict()
+    print(data)
+    newData = {
+        "capacity": data["capacity"],
+        "available": data["available"] + quantity,
+    }
+    db.collection("storage-facilites").document("s2").set(newData)
+
+    return HttpResponseRedirect("/watertower/")
 
 
 def storage(request):
     # login starts
 
     context = {}
-    date = []
+    flat = []
     quant = []
-    data = db.collection("admin-data").get()
+    email = []
+    data = db.collection("storage").get()
     print(data)
     for doc in data:
         a = doc.to_dict()
-        date.append(a["Date"])
-        quant.append(a["Quantity"])
+        flat.append(a["flatno"])
+        quant.append(a["quantity"])
+        email.append(a["email"])
         print(a)
-    context["set"] = zip(date, quant)
+    context["set"] = zip(flat, quant, email)
     print(context)
 
-    # school_name.append(a["school_name"])
-    # upload.append(a['state'])
-    # print(a['state'])
-
-    # context["temp"]=request.POST.get("storage_id")
-    # context["ph"]=request.POST.get("storage_id")
-    # context["turbi"]=request.POST.get("storage_id")
-    # ph_cal=pH_Calc(context["ph"])
-    # turb_cal= turb_Calc(context["turbi"])
-    # temp_cal=temp_Calc(context["temp"])
-    # if ph_cal < 5 or turb_cal < 5 or temp_cal < 3 :
-    #     context["ans"]=10
-    # else:
-    #     context["ans"] = ((pH_Calc(context["ph"]) + turb_Calc(context["turbi"]) + temp_Calc(context["temp"]))//3)*10
-    # print(context["ans"])
-    # db.collection('testSensor').document().set(context)
-    html_template = loader.get_template("storage.html")
-    return HttpResponse(html_template.render(context, request))
+    return render(request, "storage.html", context)
 
 
 def calculate(request):
@@ -223,6 +276,11 @@ def calculate(request):
     print(request.POST.get("temp"))
     print(request.POST.get("turbi"))
     print(request.POST.get("ph"))
+
+    doc = db.collection("storage-facilites").document("s1")
+    data = doc.get()
+    data = data.to_dict()
+    context = data
 
     context["temp"] = request.POST.get("temp")
     context["ph"] = request.POST.get("ph")
@@ -293,15 +351,12 @@ def requestwater(request):
         {"quantity": int(quantity), "flatno": flatno}
     )
     txn = {
-        "hash": ["0xd6984f6afb52e82599035f5aab6398204abff47aa80e057df429c9b541684d97"],
+        "hash": "0xd6984f6afb52e82599035f5aab6398204abff47aa80e057df429c9b541684d97",
         "status": "Request Sent",
     }
-    doc = db.collection("transactions").document(str(email))
-    data = doc.get()
-    data = data.to_dict()
-    data = data["transactions"]
-    data.append(txn)
-    db.collection("transactions").document(str(email)).set({"transactions": data})
+    doc = (
+        db.collection("transactions").document(str(email)).set({"transactions": [txn]})
+    )
     return render(request, "invoice.html")
 
 

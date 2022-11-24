@@ -117,9 +117,9 @@
                   <div class="card-box height-100-p widget-style3">
                      <div class="d-flex flex-wrap">
                         <div class="widget-data">
-                           <div class="weight-700 font-24 text-dark">10,000</div>
+                           <div class="weight-700 font-24 text-dark">{{capacity}}</div>
                            <div class="font-14 text-secondary weight-500">
-                           Liters 
+                           Liters Capacity
                            </div>
                         </div>
                         <div class="widget-icon">
@@ -135,7 +135,7 @@
                      <div class="d-flex flex-wrap">
                         <div class="widget-data">
                            <div class="weight-700 font-24 text-dark">
-                           200 liters 
+                           {{available}} liters 
                            
                         </div>
                            <div class="font-14 text-secondary weight-500">
@@ -152,7 +152,7 @@
                </div>
                <form method="post" action="/deploy2/" name ="deploy2">
                   {% csrf_token %}
-               <input type="hidden" name="quantity" value="200" />
+               <input type="hidden" name="quantity" value={{available}} />
                <input type="hidden" name="quality" value={{ans}} />
                <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;top: 20px;position: relative;">Transfer</button>
             </form>
