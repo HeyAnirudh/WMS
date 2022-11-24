@@ -124,6 +124,7 @@
         padding: 19px;
         position: relative;
         margin-left: 73px;
+        max-height: 300px;
       "
     >
       <h2 class="text-center text-primary mb-10">Add Requirement</h2>
@@ -131,7 +132,7 @@
       <form name="admin" action="/pushreq/" method="post" a>
         {% csrf_token %}
 
-        <div>
+        <!-- <div>
           <label for="cars">Area:</label>
 
           <select
@@ -145,8 +146,8 @@
             <option value="saab">Nagole</option>
             <option value="saab">Koti</option>
           </select>
-        </div>
-        <div>
+        </div> -->
+        <!-- <div>
           <label for="cars">Building:</label>
 
           <select
@@ -160,15 +161,15 @@
             <option value="saab">Landmark</option>
             <option value="saab">Pebble palace</option>
           </select>
-        </div>
+        </div> -->
 
         <div class="input-group custom">
           <input
             id="input-username"
             type="text"
             class="form-control form-control-lg"
-            placeholder="Storage Id"
-            name="storage_id"
+            placeholder="Flat Number"
+            name="flatno"
           />
         </div>
         <div class="input-group custom">
@@ -179,17 +180,6 @@
             placeholder="Quantity"
             name="quantity"
           />
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="customCheck1"
-              />
-            </div>
-          </div>
         </div>
 
         <div class="row">
@@ -215,7 +205,7 @@
       style="
         width: 30%;
         margin: auto;
-        top: -499px;
+        top: -300px;
         padding: 19px;
         position: relative;
         margin-left: 605px;
@@ -224,30 +214,16 @@
     >
       <thead>
         <tr>
-          <th scope="col">User Name</th>
           <th scope="col">Flat Number</th>
           <th scope="col">Requested Quantity</th>
         </tr>
       </thead>
 
-      {% for i,j,k in set %}
+      {% for i,j in set %}
 
       <tr>
         <th scope="col">{{ i }}</th>
         <th scope="col">{{ j }}</th>
-        <th scope="col">{{ k }}</th>
-        <!-- <th scope="col">
-          <form method="post" action="/deploy/" name="deploy">
-            {% csrf_token %}
-            <button
-              type="submit"
-              class="btn btn-outline-dark"
-              style="width: 135px; height: 57px; top: 20px; position: relative"
-            >
-              Transfer
-            </button>
-          </form>
-        </th> -->
       </tr>
 
       {% endfor %}
