@@ -16,6 +16,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       <link
          rel="icon"
          type="image/png"
@@ -89,6 +90,15 @@
       <!-- End Google Tag Manager -->
       <!-- router script-->
       <script defer type="module" src="./router.js"></script>
+      <style>
+         .material-symbols-outlined {
+           font-variation-settings:
+           'FILL' 0,
+           'wght' 400,
+           'GRAD' 0,
+           'opsz' 48
+         }
+         </style>
    </head>
    <body style="overflow-x: hidden;overflow-y:hidden">
 
@@ -97,7 +107,7 @@
             <div class="loader-logo">
                <!-- insert custom app logo here - svg format -->
                <!-- <img src="/static/vendors/images/deskapp-logo.svg" alt="" /> -->
-               <p style="color: black">HydroSense</p>
+               <p style="color: black">Welcome {{ user }}</p>
             </div>
             <div class="loader-progress" id="progress_div">
                <div class="bar" id="bar1"></div>
@@ -326,8 +336,10 @@
             </div>
          </div>
          <div class="menu-block customscroll">
+            {{ user }}
             <div class="sidebar-menu">
                <ul id="accordion-menu">
+                  <li>{{ user }}</li>
                   <!-- <li>
                      <a href="/" class="dropdown-toggle no-arrow --nav-btn">
                         <span class="micon bi bi-house"></span
@@ -386,6 +398,17 @@
                      >
                         <span class="micon bi bi-receipt-cutoff"></span
                         ><span class="mtext">Invoice</span>
+                     </a>
+                     
+                  </li>
+                  <li>
+                     <a
+                        href="/pages/invoice.html"
+                        class="dropdown-toggle no-arrow --nav-btn"
+                     >
+                     
+                        <span class="micon bi bi-receipt-cutoff"></span
+                        ><span class="mtext">Share it</span>
                      </a>
                      
                   </li>

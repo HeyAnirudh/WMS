@@ -124,7 +124,8 @@ def signin(request):
     if doc.exists:
         doc = doc.to_dict()
         if password == doc["password"]:
-            return render(request, "landing.html")
+            context = {"user": email}
+            return render(request, "dashboard.html", context)
         else:
             print("Wrong Password")
             return render(request, "login.html")
@@ -149,6 +150,22 @@ def storage(request):
     # login starts
 
     context = {}
+    date = []
+    quant = []
+    data = db.collection("admin-data").get()
+    print(data)
+    for doc in data:
+        a = doc.to_dict()
+        date.append(a["Date"])
+        quant.append(a["Quantity"])
+        print(a)
+    context["set"] = zip(date, quant)
+    print(context)
+
+    # school_name.append(a["school_name"])
+    # upload.append(a['state'])
+    # print(a['state'])
+
     # context["temp"]=request.POST.get("storage_id")
     # context["ph"]=request.POST.get("storage_id")
     # context["turbi"]=request.POST.get("storage_id")
@@ -189,7 +206,16 @@ def calculate(request):
             // 3
         ) * 10
     print(context["ans"])
-    return render(request, "waterTower.html", context)
+    data = db.collection("admin-data").get()
+    print(data)
+    return render(request, "storage.html", context)
+
+
+def show_request(request):
+    data = db.collection("admin-data").get()
+    print(data)
+
+    return render(request, "storage.html")
 
 
 # Create your views here.
