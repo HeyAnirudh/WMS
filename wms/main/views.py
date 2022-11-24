@@ -123,7 +123,8 @@ def signin(request):
     if doc.exists:
         doc = doc.to_dict()
         if password == doc["password"]:
-            return render(request, "landing.html")
+            context={'user':email}
+            return render(request, "dashboard.html",context)
         else:
             print("Wrong Password")
             return render(request, "login.html")
