@@ -2,6 +2,8 @@
 <html>
 
 <head>
+ 
+  
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
     <title>HydroSense - Water Resource Management System</title>
@@ -83,7 +85,7 @@
             <div class="menu-icon bi bi-list"></div>
             <div class="search-toggle-icon bi bi-search" data-toggle="header_search"></div>
             <div class="title pb-20">
-                <h2 class="h3 mt-4">Invoice</h2>
+                <h2 class="h3 mt-4">Payment</h2>
             </div>
         </div>
     </div>
@@ -103,7 +105,7 @@
                     </li>
                     <li>
                         <a href="/invoice/" class="dropdown-toggle no-arrow --nav-btn">
-                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Invoice</span>
+                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Share</span>
                         </a>
 
                     </li>
@@ -120,58 +122,20 @@
 
     <div class="main-container">
     </div>
-    <div style="position: relative; left: 300px">
-        <table class="table" style="width: 79%; background-color: white;">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Date</th>
-                <th scope="col">Transaction Hash</th>
-                <th scope="col">Quality</th>
-                <th scope="col">Quantity (in L)</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>02-11-2022</td>
-                <td>0x7589475fefc46ce9fb75872ca3aa67b5645b26fc3424c2ade6e118f47f48ea17</td>
-                <td>80</td>
-                <td>10</td>
-                <td>Request Sent</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>01-10-2022</td>
-                <td>0x3c6312a7ac80fabee7b39925070307d55cab79c66086c91a9487b35a7a6f0f00</td>
-                <td>76</td>
-                <td>15</td>
-                <td>Received</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>02-09-2022</td>
-                <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
-                <td>82</td>
-                <td>10</td>
-                <td>Received</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>02-08-2022</td>
-                <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
-                <td>69</td>
-                <td>12</td>
-                <td>Received</td>
-              </tr>
-              
-            </tbody>
-          </table>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Request Water</button>
+    <p> Secure Payment</p>
+    <img src="/static/img/2500.jpeg" style=" left: 725px;
+    position: relative;">
+    <form method="post" action="/confirm/" name="pay">
+      {% csrf_token %}
+      <div class="container">
+    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="left: 598px;
+    position: relative;
+    top: 41px;">Proceed</button>
+    </div>
+    </form>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+
+  <!-- <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Request Water</h5>
@@ -180,7 +144,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="submitreq" action="/payment/" method="post" name="userReq">
+        <form id="submitreq" action="/requestwater/" method="post" name="userReq">
           {% csrf_token %}
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Email Id: </label>
@@ -206,7 +170,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
     </div>
 
