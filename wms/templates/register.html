@@ -124,9 +124,17 @@
                   method="post"
                 >
                   {% csrf_token %}
-                  <h5>Basic Account Credentials</h5>
+                  <h5>Personal Information</h5>
                   <section>
                     <div class="form-wrap max-width-600 mx-auto">
+                      <div class="form-group row">
+                        <label class="col-sm-4 col-form-label"
+                          >Full Name*</label
+                        >
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" />
+                        </div>
+                      </div>
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label"
                           >Email Address*</label
@@ -160,17 +168,9 @@
                     </div>
                   </section>
                   <!-- Step 2 -->
-                  <h5>Personal Information</h5>
+                  <h5>Basic Account Credentials</h5>
                   <section>
                     <div class="form-wrap max-width-600 mx-auto">
-                      <div class="form-group row">
-                        <label class="col-sm-4 col-form-label"
-                          >Full Name*</label
-                        >
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" />
-                        </div>
-                      </div>
                       <div class="form-group row">
                         <label class="col-sm-4 col-form-label">City</label>
                         <div class="col-sm-8">
@@ -183,28 +183,6 @@
                           <input type="text" class="form-control" />
                         </div>
                       </div>
-                    </div>
-                  </section>
-                  <!-- Step 3 -->
-                  <h5>Other Info</h5>
-                  <section>
-                    <div class="form-wrap max-width-600 mx-auto">
-                      <!-- <div class="form-group row">
-                        <label class="col-sm-4 col-form-label"
-                          >Building Name</label
-                        >
-                        <div class="col-sm-8">
-                          <select
-                            class="form-control selectpicker"
-                            name="society"
-                            title="Society Name"
-                          >
-                            <option value="s1">Lodha</option>
-                            <option value="s2">Green Park</option>
-                            <option value="s3">Landmark</option>
-                          </select>
-                        </div>
-                      </div> -->
                       <div class="form-group row align-items-center">
                         <label class="col-sm-4 col-form-label"
                           >MetaMask Address</label

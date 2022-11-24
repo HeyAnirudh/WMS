@@ -12,6 +12,8 @@ import datetime
 from datetime import date
 import os
 
+user = ""
+
 # from django.conf import settings
 # settings.configure()
 
@@ -74,9 +76,8 @@ def register(request):
 
 def admin(request):
     context = {}
-    store = []
+    flat = []
     quant = []
-    build = []
     storage = request.POST.get("storage_id")
     print(storage)
     quantity = request.POST.get("quantity")
@@ -86,16 +87,18 @@ def admin(request):
     )
 
     data = db.collection("user-request").get()
-    print(data)
     for doc in data:
         a = doc.to_dict()
-        store.append(a["storage"])
+        flat.append(a["flatno"])
         quant.append(a["quantity"])
-        build.append(a["building"])
         print(a)
-    context["set"] = zip(build, store, quant)
+    context["set"] = zip(flat, quant)
     print(context)
     return render(request, "admin.html", context)
+
+
+def approveRequest(request):
+    email = request.POST.get("email")
 
 
 def dashboard(request):
@@ -103,6 +106,7 @@ def dashboard(request):
 
 
 def invoice(request):
+    print("user", user)
     return render(request, "invoice.html")
 
 
@@ -120,6 +124,7 @@ def signup(request):
     metamask = request.POST.get("metamask")
     flat = request.POST.get("flat")
     society = request.POST.get("society")
+    user = email
     db.collection("user-registration").document(str(email)).set(
         {
             "email": email,
@@ -141,6 +146,7 @@ def signin(request):
         doc = doc.to_dict()
         if password == doc["password"]:
             context = {"user": email}
+            user = email
             return render(request, "dashboard.html", context)
         else:
             print("Wrong Password")
@@ -280,11 +286,22 @@ def show_request(request):
 def requestwater(request):
     email = request.POST.get("email")
     quantity = request.POST.get("qua")
-    storage = request.POST.get("storage")
-    build = request.POST.get("building")
+    doc = db.collection("user-registration").document(str(email))
+    data = doc.get()
+    flatno = int(data.to_dict()["flat"])
     db.collection("user-request").document(str(email)).set(
-        {"quantity": int(quantity), "storage": storage, "building": build}
+        {"quantity": int(quantity), "flatno": flatno}
     )
+    txn = {
+        "hash": ["0xd6984f6afb52e82599035f5aab6398204abff47aa80e057df429c9b541684d97"],
+        "status": "Request Sent",
+    }
+    doc = db.collection("transactions").document(str(email))
+    data = doc.get()
+    data = data.to_dict()
+    data = data["transactions"]
+    data.append(txn)
+    db.collection("transactions").document(str(email)).set({"transactions": data})
     return render(request, "invoice.html")
 
 
