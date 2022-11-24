@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8" />
+    <title>HydroSense - Water Resource Management System</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/vendors/images/apple-touch-icon.png" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/vendors/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/vendors/images/favicon-16x16.png" />
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/vendors/styles/core.css" />
+    <link rel="stylesheet" type="text/css" href="/static/vendors/styles/icon-font.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/src/plugins/datatables/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/src/plugins/datatables/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/vendors/styles/style.css" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="module" async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
+    <script type="module">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-GBZ3SGGX85");
+    </script>
+    <!-- Google Tag Manager -->
+    <script type="module">
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- router script-->
+    <script defer type="module" src="./router.js"></script>
+</head>
+
+<body style="overflow-x: hidden;overflow-y:hidden">
+
+    <div class="pre-loader">
+        <div class="pre-loader-box">
+            <div class="loader-logo">
+                <!-- insert custom app logo here - svg format -->
+                <!-- <img src="/static/vendors/images/deskapp-logo.svg" alt="" /> -->
+                <p style="color: black">HydroSense</p>
+            </div>
+            <div class="loader-progress" id="progress_div">
+                <div class="bar" id="bar1"></div>
+            </div>
+            <div class="percent" id="percent1">0%</div>
+            <div class="loading-text">Loading...</div>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon bi bi-list"></div>
+            <div class="search-toggle-icon bi bi-search" data-toggle="header_search"></div>
+            <div class="title pb-20">
+                <h2 class="h3 mt-4">Invoice</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-side-bar">
+        <div class="brand-logo">
+            <a href="/" class="--nav-btn">
+                <p style="color: white">HydroSense</p>
+            </a>
+            <div class="close-sidebar" data-toggle="left-sidebar-close">
+                <i class="ion-close-round"></i>
+            </div>
+        </div>
+        <div class="menu-block customscroll">
+            <div class="sidebar-menu">
+                <ul id="accordion-menu">
+                    </li>
+                    <li>
+                        <a href="/invoice/" class="dropdown-toggle no-arrow --nav-btn">
+                            <span class="micon bi bi-receipt-cutoff"></span><span class="mtext">Invoice</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="/" class="dropdown-toggle no-arrow --nav-btn">
+                            <span class="micon bi bi-chat-right-dots"></span><span class="mtext">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="main-container">
+    </div>
+    <div style="position: relative; left: 300px">
+        <table class="table" style="width: 79%; background-color: white;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Transaction Hash</th>
+                <th scope="col">Quality</th>
+                <th scope="col">Quantity (in L)</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>02-11-2022</td>
+                <td>0x7589475fefc46ce9fb75872ca3aa67b5645b26fc3424c2ade6e118f47f48ea17</td>
+                <td>80</td>
+                <td>10</td>
+                <td>Request Sent</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>01-10-2022</td>
+                <td>0x3c6312a7ac80fabee7b39925070307d55cab79c66086c91a9487b35a7a6f0f00</td>
+                <td>76</td>
+                <td>15</td>
+                <td>Received</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>02-09-2022</td>
+                <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
+                <td>82</td>
+                <td>10</td>
+                <td>Received</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>02-08-2022</td>
+                <td>0xb49efe745b36c63cf087789a9c88f43a8646d3a6de587db42f0a29310e0e6f7a</td>
+                <td>69</td>
+                <td>12</td>
+                <td>Received</td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Request Water</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Request Water</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="submitreq" action="/requestwater/" method="post" name="userReq">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email Id: </label>
+            <input type="text" class="form-control" id="recipient-name" name="email">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Storage Id: </label>
+            <input type="text" class="form-control" id="recipient-name" name="storage">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Building Name: </label>
+            <input type="text" class="form-control" id="recipient-name" name="building">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Quantity: </label>
+            <input type="text" class="form-control" id="recipient-name" name="qua">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Request</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+    <!-- js -->
+    <script src="/static/vendors/scripts/core.js"></script>
+    <script src="/static/vendors/scripts/script.min.js"></script>
+    <script src="/static/vendors/scripts/process.js"></script>
+    <script src="/static/vendors/scripts/layout-settings.js"></script>
+    <script src="/static/src/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="/static/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/static/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="/static/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="/static/vendors/scripts/dashboard3.js"></script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
