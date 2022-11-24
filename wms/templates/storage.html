@@ -105,6 +105,7 @@
 
           <div style="margin-top: 45px;">
               <img  src="/static/img/tank-removebg-preview.png" alt="waterTower" width="400px"/>
+              
       </div>
       <div class="ml-5">
          <div class="xs-pd-20-10 pd-ltr-20">
@@ -114,40 +115,20 @@
             <table class="table">
   <thead>
     <tr>
-      <th scope="col">Total Capacity</th>
       <th scope="col">Date </th>
       <th scope="col">Requested Quant</th>
       <th scope="col">Approve</th>
     </tr>
   </thead>
-  <tr>
-   <th scope="col">10000</th>
-   <th scope="col">27/01/2022 </th>
-   <th scope="col">1000</th>
-   <th scope="col"><form method="post" action="/action1/" name ="action1">
-      {% csrf_token %}
-     <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;position: relative;">Transfer</button>
-  </form></th>
- </tr>
- <tr>
-   <th scope="col">10000</th>
-   <th scope="col">27/01/2022 </th>
-   <th scope="col">3000</th>
-   <th scope="col"><form method="post" action="/action1/" name ="action1">
-      {% csrf_token %}
-     <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;position: relative;">Transfer</button>
-  </form></th>
- </tr>
 
   {% for i,j in set %} 
  
   
 
    <tr>
-     <th scope="col">10000</th>
      <th scope="col">{{ i }} </th>
      <th scope="col">{{ j }}</th>
-     <th scope="col"><form method="post" action="/action1/" name ="action1">
+     <th scope="col"><form method="post" action="/deploy/" name ="deploy">
       {% csrf_token %}
      <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;top: 20px;position: relative;">Transfer</button>
   </form></th>
@@ -182,7 +163,7 @@
                            <div class="weight-700 font-24 text-dark">
                            200 liters 
                         </div>
-                           <form action="/action1/" method="post">
+                           <form action="/deploy/" method="post">
                            <div class="font-14 text-secondary weight-500">
                               Requirements
                            </div>
@@ -196,7 +177,7 @@
                      </div>
                   </div>
                </div> -->
-            <!-- <form method="post" action="/action1/" name ="action1">
+            <!-- <form method="post" action="/deploy/" name ="deploy">
                 {% csrf_token %}
                <button  type="submit" class="btn btn-outline-dark" style="width: 135px;height: 57px;top: 20px;position: relative;">Transfer</button>
             </form> -->
@@ -234,7 +215,7 @@
           <div class="title pb-20">
               <h2 class="h3 mb-0">Calculate Quality</h2>
             </div>
-            <form method="post" action="/calculate/"  name="calc">
+            <form method="post" action="/calculate2/"  name="calc2">
          {% csrf_token %}
          <div class="form-row">
            <div class="col">

@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, loader
+from django.http import HttpResponseRedirect
 
 # import pyrebase4
 import firebase_admin
@@ -72,6 +73,10 @@ def register(request):
 
 
 def admin(request):
+    context = {}
+    store = []
+    quant = []
+    build = []
     storage = request.POST.get("storage_id")
     print(storage)
     quantity = request.POST.get("quantity")
@@ -79,7 +84,18 @@ def admin(request):
     db.collection("admin-data").document(str(storage)).set(
         {"Date": str(today), "Quantity": quantity}
     )
-    return render(request, "admin.html")
+
+    data = db.collection("user-request").get()
+    print(data)
+    for doc in data:
+        a = doc.to_dict()
+        store.append(a["storage"])
+        quant.append(a["quantity"])
+        build.append(a["building"])
+        print(a)
+    context["set"] = zip(build, store, quant)
+    print(context)
+    return render(request, "admin.html", context)
 
 
 def dashboard(request):
@@ -139,11 +155,25 @@ def deployContract(request):
     # receiver = request.POST.get("receiver")
     sender = os.getenv("TOWER_ADDR")
     receiver = os.getenv("STORAGE_ADDR")
+    # quality = int(request.POST.get("quality"))
+    quality = 80
+    # quantity = int(request.POST.get("quantity"))
+    quantity = 28
+    print(sender)
+    deploy(sender, receiver, quantity, quality)
+    return render(request, "storage.html")
+
+
+def deployContract2(request):
+    # sender = request.POST.get("sender")
+    # receiver = request.POST.get("receiver")
+    sender = os.getenv("STORAGE_ADDR")
+    receiver = os.getenv("USER_ADDR")
     quality = int(request.POST.get("quality"))
     quantity = int(request.POST.get("quantity"))
     print(sender)
     deploy(sender, receiver, quantity, quality)
-    return render(request, "admin.html")
+    return render(request, "waterTower.html")
 
 
 def storage(request):
@@ -208,6 +238,35 @@ def calculate(request):
     print(context["ans"])
     data = db.collection("admin-data").get()
     print(data)
+    return render(request, "waterTower.html", context)
+
+
+def calculate2(request):
+    context = {}
+    print(request.POST.get("temp"))
+    print(request.POST.get("turbi"))
+    print(request.POST.get("ph"))
+
+    context["temp"] = request.POST.get("temp")
+    context["ph"] = request.POST.get("ph")
+    context["turbi"] = request.POST.get("turbi")
+    ph_cal = pH_Calc(int(context["ph"]))
+    turb_cal = turb_Calc(float(context["turbi"]))
+    temp_cal = temp_Calc(int(context["temp"]))
+    if ph_cal < 5 or turb_cal < 5 or temp_cal < 3:
+        context["ans"] = 10
+    else:
+        context["ans"] = (
+            (
+                pH_Calc(int(context["ph"]))
+                + turb_Calc(float(context["turbi"]))
+                + temp_Calc(int(context["temp"]))
+            )
+            // 3
+        ) * 10
+    print(context["ans"])
+    data = db.collection("admin-data").get()
+    print(data)
     return render(request, "storage.html", context)
 
 
@@ -216,6 +275,17 @@ def show_request(request):
     print(data)
 
     return render(request, "storage.html")
+
+
+def requestwater(request):
+    email = request.POST.get("email")
+    quantity = request.POST.get("qua")
+    storage = request.POST.get("storage")
+    build = request.POST.get("building")
+    db.collection("user-request").document(str(email)).set(
+        {"quantity": int(quantity), "storage": storage, "building": build}
+    )
+    return render(request, "invoice.html")
 
 
 # Create your views here.

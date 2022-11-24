@@ -114,29 +114,51 @@
       <script src="/static/vendors/scripts/admin-chart.js"></script>
     </div>
 
-    <div id="admin-form" class="bg-white border-radius-10 box-shadow">
+    <div
+      id="admin-form"
+      class="bg-white border-radius-10 box-shadow"
+      style="
+        width: 30%;
+        margin: auto;
+        margin-top: 26px;
+        padding: 19px;
+        position: relative;
+        margin-left: 73px;
+      "
+    >
       <h2 class="text-center text-primary mb-10">Add Requirement</h2>
 
-      <form name="admin" action="/pushreq/" method="post">
+      <form name="admin" action="/pushreq/" method="post" a>
         {% csrf_token %}
 
         <div>
-          <label for="cars">City:</label>
+          <label for="cars">Area:</label>
 
-          <select name="cars" id="cars" class="border-radius-5 p-2 mb-4">
-            <option value="volvo">Delhi</option>
-            <option value="saab">Mumbai</option>
-            <option value="saab">Hyderabad</option>
-            <option value="saab">Kolkata</option>
+          <select
+            name="cars"
+            id="cars"
+            class="border-radius-5 p-2 mb-4"
+            placeholder="Area"
+          >
+            <option value="volvo">Begumpet</option>
+            <option value="saab">Khairtabad</option>
+            <option value="saab">Nagole</option>
+            <option value="saab">Koti</option>
           </select>
         </div>
         <div>
-          <label for="cars">Nodal Centre:</label>
+          <label for="cars">Building:</label>
 
-          <select name="cars" id="cars" class="border-radius-5 p-2 mb-4">
+          <select
+            name="cars"
+            id="cars"
+            class="border-radius-5 p-2 mb-4"
+            placeholder="Building"
+          >
             <option value="volvo">Green park</option>
             <option value="saab">Lodha</option>
             <option value="saab">Landmark</option>
+            <option value="saab">Pebble palace</option>
           </select>
         </div>
 
@@ -187,6 +209,49 @@
         </div>
       </form>
     </div>
+
+    <table
+      class="table border-radius-10 box-shadow"
+      style="
+        width: 30%;
+        margin: auto;
+        top: -499px;
+        padding: 19px;
+        position: relative;
+        margin-left: 605px;
+        background-color: white;
+      "
+    >
+      <thead>
+        <tr>
+          <th scope="col">User Name</th>
+          <th scope="col">Flat Number</th>
+          <th scope="col">Requested Quantity</th>
+        </tr>
+      </thead>
+
+      {% for i,j,k in set %}
+
+      <tr>
+        <th scope="col">{{ i }}</th>
+        <th scope="col">{{ j }}</th>
+        <th scope="col">{{ k }}</th>
+        <!-- <th scope="col">
+          <form method="post" action="/deploy/" name="deploy">
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="btn btn-outline-dark"
+              style="width: 135px; height: 57px; top: 20px; position: relative"
+            >
+              Transfer
+            </button>
+          </form>
+        </th> -->
+      </tr>
+
+      {% endfor %}
+    </table>
     <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
