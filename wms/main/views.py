@@ -306,3 +306,33 @@ def requestwater(request):
 
 
 # Create your views here.
+
+def share(request):
+    data = db.collection("user-registration").get()
+    print(data)
+    context={}
+    email=[]
+    flat=[]
+    soc=[]
+    quant=[]
+    for doc in data:
+        a = doc.to_dict()
+        print(a)
+        email.append(a['email'])
+        flat.append(a['flat'])
+        soc.append(a['society'])
+        quant.append(a['quantity'])
+
+    context['set']=zip(email,flat,soc,quant)
+    print(context['set'])
+
+    return render(request,"share.html",context)
+
+
+
+def pay(request):
+    return render(request,'qr.html')
+
+def confirm(request):
+    return render(request,'invoice1.html')
+
